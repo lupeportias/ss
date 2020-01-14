@@ -1,10 +1,14 @@
- /* hello */
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 .container {
   box-sizing: border-box;
   padding-right: 15px;
   padding-left: 15px;
   width: 100%;
-
 }
 
 ul {
@@ -34,26 +38,32 @@ p {
 .counter {
   font-weight: bold;
 }
+
 .card-img {
-  max-height: 440px;
-  width: 100%;
+  max-height: 320px;
+  max-width: 100%;
 }
 
-.button-box {
+.btn-box {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
-button {
+.btn-box a {
   color: white;
   cursor: pointer;
   font-size: 16px;
-  width: 50%;
+  padding: 5px;
+  text-align: center;
+  transition: all 0.5s ease;
+  width: 45%;
 }
 
 .edit {
   background-color: #9c27b0;
 }
+
 .edit:hover {
   background-color: #d27fe0;
 }
@@ -64,4 +74,109 @@ button {
 
 .delete:hover {
   background-color: #9c27b0;
+}
+
+.btn-add {
+  background-color: #9c27b0;
+  border: none;
+  color: white;
+  font-size: 14px;
+  padding: 5px;
+  transition: all 0.5s ease;
+}
+
+.btn-add:hover {
+  background-color: #d27fe0;
+}
+
+.modal {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.modal.show {
+  display: block;
+}
+
+.modal .content {
+  background-color: white;
+  box-sizing: border-box;
+  height: 470px;
+  left: 50%;
+  margin: -235px 0 0 -300px;
+  padding: 20px;
+  position: fixed;
+  top: 50%;
+  width: 600px;
+}
+
+.modal .close {
+  background-color: #9c27b0;
+  border-radius: 100%;
+  color: white;
+  cursor: pointer;
+  height: 20px;
+  position: absolute;
+  right: 20px;
+  text-align: center;
+  transition: all 0.5s ease;
+  width: 20px;
+}
+
+.modal .close:hover {
+  background-color: #670977;
+}
+
+.modal .form{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.modal input {
+  margin: 0 0 10px;
+  width: 90%;
+}
+
+.modal-img {
+  max-height: 320px;
+  max-width: 320px;
+}
+
+.modal .save {
+  background-color: #9c27b0;
+  border: none;
+  color: white;
+  font-size: 14px;
+  padding: 5px;
+  transition: all 0.5s ease;
+}
+
+.modal .save:hover {
+  background-color: #d27fe0;
+}
+
+.modal-btn-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0 0;
+}
+
+.cancel {
+  background-color: #949494;
+  border: none;
+  color: white;
+  font-size: 14px;
+  padding: 5px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.cancel:hover {
+  background-color: black;
 }

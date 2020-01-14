@@ -1,64 +1,60 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css">
 
-	<title>Movies</title>
+  <title>Movies</title>
 </head>
+
 <body>
-	<h1>SetenTrial</h1>
-	<div id="app"></div>
-    <div class="container">
-
-			<p id="counter">
-
-			</p>
-
-			<div class='modal'>
-        <div class='content'>
-          <span onclick='toggleClass()' class='close'>x</span>
-          <form class='form' id="form">
-						<input type='text' placeholder='Name' id='name' />
-						<input type="hidden" id="id" />
-						<input type='text' placeholder='Description' id='description' />
-						<input type="file" onchange="previewFile()" />
-						<img src="" height="200" alt="Image preview..." id="img">
-            <div class='wrapper-buttons'>
-              <button type="button" onclick="submit_by_id()">Save </button>
-            </div>
-          </form>
-					<button onclick='toggleClass()'>Cancel</button>
-        </div>
+  <h1>SetenTrial</h1>
+  <div id="app"></div>
+  <div class="container">
+    <p id="counter">
+    </p>
+    <div class='modal'>
+      <div class='content'>
+        <span onclick='toggleClass()' class='close'>x</span>
+        <form class='form' id="form">
+          <input type='text' placeholder='Name' id='name' />
+          <input type="hidden" id="id" />
+          <input type='text' placeholder='Description' id='description' />
+          <input type="file" onchange="previewFile()" />
+          <img src="img/placeholder.png" class="modal-img" alt="Image preview..." id="img">
+          <div class="modal-btn-box">
+            <button type="button" class="save" onclick="submit_by_id()">Save </button>
+            <a class="cancel" onclick='toggleClass()'>Cancel</a>
+          </div>
+        </form>
       </div>
     </div>
+  </div>
 
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
 
-		<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-
-		<script>
-			// Your web app's Firebase configuration
-			var firebaseConfig = {
-				apiKey: "AIzaSyC_aJXzZAAmyiip5AZ4HPr6DflkAO8XnKw",
-				authDomain: "stentrial.firebaseapp.com",
-				databaseURL: "https://stentrial.firebaseio.com/",
-				projectId: "stentrial",
-				storageBucket: "stentrial.appspot.com",
-				messagingSenderId: "274371585256",
-				appId: "1:274371585256:web:8f071ddfb876abaec0955d"
-			};
-			// Initialize Firebase
-			firebase.initializeApp(firebaseConfig);
-			var database = firebase.database().ref("movies");
-		</script>
-		<script src="js/index.js"></script>
-  </body>
+  <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+          apiKey: "AIzaSyC_aJXzZAAmyiip5AZ4HPr6DflkAO8XnKw",
+          authDomain: "stentrial.firebaseapp.com",
+          databaseURL: "https://stentrial.firebaseio.com/",
+          projectId: "stentrial",
+          storageBucket: "stentrial.appspot.com",
+          messagingSenderId: "274371585256",
+          appId: "1:274371585256:web:8f071ddfb876abaec0955d"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      var database = firebase.database().ref("movies");
+  </script>
+  <script src="js/index.js"></script>
+</body>
 </html>

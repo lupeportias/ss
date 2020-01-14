@@ -20,21 +20,27 @@ const toggleClass = () => {
 
 const template = listCopy => {
   const partme = listCopy.map(item =>
-    `<li>${item.name}
-      <img src='${item.img}'/>
-      <a onclick='deleteItem(${item.id})'>
-        <span>Delete</span>
-      </a>
-      <a onclick='editItem(${JSON.stringify(item)})'>Edit</a>
-    </li>`
+      `<li>
+    <img src='${item.img}' class='card-img'/>
+    <h3>${item.name}</h3>
+    <p>${item.description}</p>
+    <div class='btn-box'>
+    <a onclick='editItem(${JSON.stringify(item)})' class='edit'>
+    Edit
+    </a>
+    <a onclick='deleteItem(${item.id})' class='delete'>
+      Delete
+    </a>
+    </div>
+  </li>`
   ).join("");
   const templateString = (
     `<div class='wrapper'>
-      <button onclick='toggleClass()'>add Items +</button>
-      <ul id="sortable">
-        ${partme}
-      </ul>
-    </div>`
+    <button onclick='toggleClass()' class='btn-add'>Add item</button>
+    <ul id="sortable">
+      ${partme}
+    </ul>
+  </div>`
   )
   return Render.render(templateString, document.getElementById('app'))
 }
@@ -89,11 +95,11 @@ const deleteItemApi = id => new Promise(resolve => {
     })
 })
 
-const updateItem = editedItem => console.log({editedItem}) ||
+const updateItem = editedItem => console.log({ editedItem }) ||
   getItems()
     .then(list => {
-      console.log({list})
-      list = list.map(item => item.id !== editedItem.id ? item : ({id: item.id, ...editedItem}))
+      console.log({ list })
+      list = list.map(item => item.id !== editedItem.id ? item : ({ id: item.id, ...editedItem }))
 
       window.localStorage.setItem('list', JSON.stringify(list))
       template(list);
@@ -102,7 +108,7 @@ const updateItem = editedItem => console.log({editedItem}) ||
     })
 
 
-const editItem = item  => {
+const editItem = item => {
   console.log(item)
   toggleClass();
   document.getElementById("name").value = item.name
@@ -127,9 +133,9 @@ function previewFile() {
   })
 }
 
-  reader.addEventListener("load", async () => {
+  reader.addEventListener("load", async() => {
     // convert image file to base64 string
-    const {width, height} = await getImageDimensions(reader.result);
+    const { width, height } = await getImageDimensions(reader.result);
     if (height > 320 || width > 320) {
       alert("Height and Width must not exceed 320px.");
       return false;
@@ -138,7 +144,7 @@ function previewFile() {
   }, false);
 
   if (file) {
-    reader.readAsDataURL(file);
+      reader.readAsDataURL(file);
   }
 }
 
@@ -149,10 +155,10 @@ function submit_by_id() {
   var id = document.getElementById("id").value
   // document.getElementById("form_id").submit(); //form submission
   if (onEdit) {
-    console.log(id, name)
-    updateItem({id, name, description, img})
+      console.log(id, name)
+      updateItem({ id, name, description, img })
   } else {
-    addItem({name, description, img})
+      addItem({ name, description, img })
   }
   document.getElementById("img").src = '';
   document.getElementById("form").reset();
