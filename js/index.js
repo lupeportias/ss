@@ -73,7 +73,6 @@ const init = () => getItems().then(list => {
 })
 
 const addItem = value => {
-  // if (value === '') return false
   toggleClass()
   const item = { id: Date.now(), ...value }
   addItemApi(item).then(list => setTimeout(() => {
@@ -103,7 +102,6 @@ const deleteItemApi = id => new Promise(resolve => {
 
 const updateItem = editedItem =>  getItems()
     .then(list => {
-      console.log({ list })
       list = list.map(item => item.id !== editedItem.id ? item : ({ id: item.id, ...editedItem }))
 
       window.localStorage.setItem('list', JSON.stringify(list))
@@ -114,7 +112,6 @@ const updateItem = editedItem =>  getItems()
 
 
 const editItem = item => {
-  console.log(item)
   toggleClass();
   document.getElementById("name").value = item.name
   document.getElementById("description").value = item.description
@@ -158,20 +155,17 @@ function save() {
   var description = document.getElementById("description").value;
   var img = document.getElementById("img").src;
   var id = document.getElementById("id").value
-  if (document.getElementById("name").value === '' || document.getElementById("description").value === '' || document.getElementById("img").src === '') {
+  if (document.getElementById("name").value === '' || document.getElementById("description").value === '' || document.getElementById("img").src === 'img/placeholder.png') {
     alert("Required fields are empty");
     return false;
   }
+  toggleClass();
   if (onEdit) {
       console.log(id, name)
       updateItem({ id, name, description, img })
   } else {
       addItem({ name, description, img })
   }
-  document.getElementById("img").src = 'img/placeholder.png';
-  document.getElementById("form").reset();
-  toggleClass();
-}
-
+  }
 
 init();
