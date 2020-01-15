@@ -16,6 +16,8 @@ const sortable = () => {
 const toggleClass = () => {
   const modal = document.querySelector('.modal')
   const trueOrFalse = modal.classList.contains('show')
+  document.getElementById("img").src = 'img/placeholder.png';
+  document.getElementById("form").reset();
   return trueOrFalse ? modal.classList.remove('show') : modal.classList.add('show')
 }
 
@@ -38,6 +40,9 @@ const template = listCopy => {
   const templateString = (
     `<div class='wrapper'>
     <button onclick='toggleClass()' class='btn-add'>Add item</button>
+    <p id="counter">
+      ${listCopy.length}
+    </p>
     <ul id="sortable">
       ${partme}
     </ul>
@@ -153,7 +158,10 @@ function save() {
   var description = document.getElementById("description").value;
   var img = document.getElementById("img").src;
   var id = document.getElementById("id").value
-  // document.getElementById("form_id").submit(); //form submission
+  if (document.getElementById("name").value === '' || document.getElementById("description").value === '' || document.getElementById("img").src === '') {
+    alert("Required fields are empty");
+    return false;
+  }
   if (onEdit) {
       console.log(id, name)
       updateItem({ id, name, description, img })
