@@ -1,3 +1,4 @@
+
 let onEdit = false;
 
 const Render = {
@@ -95,8 +96,7 @@ const deleteItemApi = id => new Promise(resolve => {
     })
 })
 
-const updateItem = editedItem => console.log({ editedItem }) ||
-  getItems()
+const updateItem = editedItem =>  getItems()
     .then(list => {
       console.log({ list })
       list = list.map(item => item.id !== editedItem.id ? item : ({ id: item.id, ...editedItem }))
@@ -119,19 +119,19 @@ const editItem = item => {
 }
 
 function previewFile() {
-  const preview = document.querySelector('img');
+  const preview = document.getElementById('img');
   const file = document.querySelector('input[type=file]').files[0];
   const reader = new FileReader();
 
   function getImageDimensions(file) {
-  return new Promise (function (resolved, rejected) {
-    var i = new Image()
-    i.onload = function(){
-      resolved({width: i.width, height: i.height})
-    };
-    i.src = file
-  })
-}
+    return new Promise (function (resolved, rejected) {
+      var i = new Image()
+      i.onload = function(){
+        resolved({width: i.width, height: i.height})
+      };
+      i.src = file
+    })
+  }
 
   reader.addEventListener("load", async() => {
     // convert image file to base64 string
@@ -148,7 +148,7 @@ function previewFile() {
   }
 }
 
-function submit_by_id() {
+function save() {
   var name = document.getElementById("name").value;
   var description = document.getElementById("description").value;
   var img = document.getElementById("img").src;
@@ -160,9 +160,9 @@ function submit_by_id() {
   } else {
       addItem({ name, description, img })
   }
-  document.getElementById("img").src = '';
+  document.getElementById("img").src = 'img/placeholder.png';
   document.getElementById("form").reset();
-
+  toggleClass();
 }
 
 

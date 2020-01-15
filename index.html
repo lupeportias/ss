@@ -26,7 +26,7 @@
           <input type="file" onchange="previewFile()" />
           <img src="img/placeholder.png" class="modal-img" alt="Image preview..." id="img">
           <div class="modal-btn-box">
-            <button type="button" class="save" onclick="submit_by_id()">Save </button>
+            <button type="button" class="save" onclick="save()">Save</button>
             <a class="cancel" onclick='toggleClass()'>Cancel</a>
           </div>
         </form>
@@ -34,8 +34,6 @@
     </div>
   </div>
 
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
 
   <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>
@@ -55,6 +53,8 @@
       firebase.initializeApp(firebaseConfig);
       var database = firebase.database().ref("movies");
   </script>
-  <script src="js/index.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="js/index.js"/></script>
 </body>
 </html>
