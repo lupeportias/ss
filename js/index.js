@@ -73,7 +73,6 @@ const init = () => getItems().then(list => {
 })
 
 const addItem = value => {
-  toggleClass()
   const item = { id: Date.now(), ...value }
   addItemApi(item).then(list => setTimeout(() => {
     template(list);
@@ -159,13 +158,12 @@ function save() {
     alert("Required fields are empty");
     return false;
   }
-  toggleClass();
   if (onEdit) {
-      console.log(id, name)
-      updateItem({ id, name, description, img })
+    updateItem({ id, name, description, img })
   } else {
-      addItem({ name, description, img })
+    addItem({ name, description, img })
   }
-  }
+  toggleClass();
+}
 
 init();
