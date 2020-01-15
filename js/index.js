@@ -86,16 +86,19 @@ const addItemApi = value => new Promise(resolve => getItems().then(list => {
 }))
 
 const deleteItem = id => deleteItemApi(id).then(list => setTimeout(() => {
+  console.log(id)
   template(list);
   sortable();
 }, 600))
 
 const deleteItemApi = id => new Promise(resolve => {
+  console.log(id)
   getItems()
     .then(items => {
       const remove = items.filter(item => item.id !== id)
       window.localStorage.setItem('list', JSON.stringify(remove))
       resolve(remove)
+      console.log(remove)
     })
 })
 
