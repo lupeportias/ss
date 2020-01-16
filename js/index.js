@@ -26,7 +26,7 @@ const template = listCopy => {
       `<li>
     <img src='${item.img}' class='card-img'/>
     <h3>${item.name}</h3>
-    <p>${item.description}</p>
+    <p class='description'>${item.description}</p>
     <div class='btn-box'>
     <a onclick='editItem(${JSON.stringify(item)})' class='edit'>
     Edit
@@ -39,10 +39,12 @@ const template = listCopy => {
   ).join("");
   const templateString = (
     `<div class='wrapper'>
-    <button onclick='toggleClass()' class='btn-add'>Add item</button>
-    <p id="counter">
-      ${listCopy.length}
-    </p>
+    <div class='header'>
+      <button onclick='toggleClass()' class='btn-add'>Add item</button>
+      <p id="counter">
+       Movie counter: ${listCopy.length}
+      </p>
+    </div>
     <ul id="sortable">
       ${partme}
     </ul>

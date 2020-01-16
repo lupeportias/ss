@@ -25,10 +25,37 @@ li {
   flex-direction: column;
   justify-content: space-between;
   padding: 5px;
-  width: 30%;
+  width: 50%;
+}
+@media only screen and (min-width: 600px) {
+  li {
+    width: 33%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  li {
+    width: 25%;
+  }
+}
+@media only screen and (min-width: 992px) {
+  li {
+    width: 20%;
+  }
 }
 
-p {
+.header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.header p {
+  margin: 0;
+}
+
+.description {
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
